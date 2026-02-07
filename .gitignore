@@ -1,0 +1,29 @@
+# Go 빌드 결과물                                                                                     
+*.exe                                  
+*.exe~                                                                                               
+*.dll                                  
+*.so
+*.dylib
+/mycard-server
+
+# Go 테스트
+*.test
+*.out
+cover.out
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 환경변수 (DB 비밀번호 등 민감 정보)
+.env
+.env.local
+
+# Docker 데이터
+docker-data/
