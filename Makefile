@@ -26,6 +26,10 @@ db-tables:
 db-schema:
 	docker exec -it mycard-db psql -U mycard -d mycard -c "\d payments"
 
+## payments 테이블 데이터 조회
+db-rows:
+	docker exec -it mycard-db psql -U mycard -d mycard -c "SELECT * FROM payments"
+
 ## DB 직접 접속 (psql 대화형)
 db-connect:
 	docker exec -it mycard-db psql -U mycard -d mycard

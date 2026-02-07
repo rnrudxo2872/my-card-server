@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"mycard-server/internal/database"
+	"mycard-server/internal/handler"
 )
 
 func main() {
@@ -16,6 +17,9 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"status": "ok"})
 
 	})
+
+	r.POST("/payments", handler.CreatePayment)
+
 	if err := r.Run(":8080"); err != nil {
 		panic(err)
 	}

@@ -1,0 +1,11 @@
+POST http://localhost:8080/payments
+Content-Type: application/json
+
+{
+    "amount": 10000,
+    "status": "complete"
+}
+
+###
+
+GET http://localhost:8080/health
