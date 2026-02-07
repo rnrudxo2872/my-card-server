@@ -1,0 +1,14 @@
+services:
+    db:
+        image: postgres:16
+        container_name: mycard-db
+        environment:
+            POSTGRES_USER: mycard
+            POSTGRES_PASSWORD: mycard1234
+            POSTGRES_DB: mycard
+        ports:
+            - "5432:5432"
+        volumes:
+            - mycard-data:/var/lib/postgresql/data
+volumes:
+    mycard-data:
