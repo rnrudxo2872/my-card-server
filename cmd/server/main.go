@@ -19,6 +19,7 @@ func main() {
 	})
 
 	r.POST("/payments", handler.CreatePayment)
+	r.GET("/payments", handler.GetPayments);
 
 	if err := r.Run(":8080"); err != nil {
 		panic(err)

@@ -35,3 +35,16 @@ func CreatePayment(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, payment)
 }
+
+func GetPayments(c *gin.Context) {
+	var payments []model.Payment
+
+	result := database.DB.Find(&payments)
+	if result.Error != nil {
+		log.Println("결제 목록 조회 실패", result.Error)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "결제 조회 실패"})
+		return
+	}
+
+	c.JSON(http.StatusOK, payments)
+}
