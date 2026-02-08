@@ -5,8 +5,10 @@ import (
 	"mycard-server/internal/database"
 	"mycard-server/internal/model"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 type CreatePaymentRequest struct {
@@ -37,9 +39,35 @@ func CreatePayment(c *gin.Context) {
 }
 
 func GetPayments(c *gin.Context) {
-	var payments []model.Payment
+	status, statusOk := c.GetQuery("status")
+	limit := c.DefaultQuery("limit", "10")
+	page := c.DefaultQuery("page", "1")	
 
-	result := database.DB.Find(&payments)
+	limitInt, err := strconv.Atoi(limit)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "limit must be an integer"})
+		return
+	}
+
+	pageInt, err := strconv.Atoi(page)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "page must be an integer"})
+		return
+	}
+
+	offset := (pageInt - 1) * limitInt
+
+	var payments []model.Payment
+	var query *gorm.DB
+
+	if(statusOk) {
+		query = database.DB.Where("status = ?", status).Limit(limitInt).Offset(offset)
+	} else {
+		query = database.DB.Limit(limitInt).Offset(offset)
+	}
+
+	result := query.Find(&payments)
+
 	if result.Error != nil {
 		log.Println("결제 목록 조회 실패", result.Error)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "결제 조회 실패"})
