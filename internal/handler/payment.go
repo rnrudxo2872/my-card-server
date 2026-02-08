@@ -76,3 +76,23 @@ func GetPayments(c *gin.Context) {
 
 	c.JSON(http.StatusOK, payments)
 }
+
+func GetPayment(c *gin.Context) {
+	id := c.Param("id")
+	idInt, err := strconv.Atoi(id)
+	if err != nil {
+		log.Println("id가 유효하지 않아 결제 조회 실패", err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "id가 유효하지 않습니다."})
+		return
+	}
+
+	var payment model.Payment
+	result := database.DB.First(&payment, idInt)
+	if result.Error != nil {
+		log.Println("결제 기록을 찾을 수 없습니다.", result.Error)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "결제 기록을 찾을 수 없습니다."})
+		return
+	}
+
+	c.JSON(http.StatusOK, payment)
+}
