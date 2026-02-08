@@ -19,7 +19,7 @@ func main() {
 	})
 
 	r.POST("/payments", handler.CreatePayment)
-	r.GET("/payments", handler.GetPayments);
+	r.GET("/payments", handler.GetPayments)
 	r.GET("/payments/:id", handler.GetPayment)
 
 	if err := r.Run(":8080"); err != nil {

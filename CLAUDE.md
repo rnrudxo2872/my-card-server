@@ -145,7 +145,12 @@ terraform/
 
 ### Step 3: 데이터베이스 스키마 설계 — ⏳ 대기
 
-### Step 4: API 구현 (로컬) — ⏳ 대기
+### Step 4: API 구현 (로컬) — ✅ 완료
+
+- [x] POST /payments (결제 기록 생성)
+- [x] GET /payments (목록 조회 + 필터링 + 페이지네이션)
+- [x] GET /payments/:id (단건 조회)
+- [x] Status 유효성 검사 (GORM BeforeCreate Hook)
 
 ### Step 5: Docker 컨테이너화 — ⏳ 대기
 
