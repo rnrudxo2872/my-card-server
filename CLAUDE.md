@@ -114,15 +114,15 @@ terraform/
 - [x] `outputs.tf` — 출력값 정의 (ALB DNS)
 - [x] `terraform init` 성공
 
-#### 6-2. VPC 네트워크 구성 — 🔄 진행 중
+#### 6-2. VPC 네트워크 구성 — ✅ 완료
 - [x] `vpc.tf` 작성
   - VPC (10.0.0.0/16)
   - Public Subnets 2개 (ap-northeast-2a, 2c) — ALB + ECS용
   - Private Subnets 2개 (ap-northeast-2a, 2c) — RDS용
   - Internet Gateway + Route Table
-- [ ] `terraform validate` 문법 검사
+- [x] `terraform validate` 문법 검사 통과
 
-#### 6-3. 보안 그룹 (Security Groups) — ⏳ 대기
+#### 6-3. 보안 그룹 (Security Groups) — 🔄 진행 중
 #### 6-4. RDS PostgreSQL — ⏳ 대기
 #### 6-5. ECR + ECS Fargate + ALB — ⏳ 대기
 #### 6-6. 전체 연결 및 terraform apply — ⏳ 대기
