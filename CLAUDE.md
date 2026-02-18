@@ -107,4 +107,24 @@ terraform/
 
 ### Step 6: Terraform으로 AWS 인프라 구성 — 🔄 진행 중
 
+#### 6-1. Terraform 기초 — ✅ 완료
+- [x] `terraform/` 디렉토리 생성
+- [x] `main.tf` — 프로바이더 설정 (hashicorp/aws ~> 5.0)
+- [x] `variables.tf` — 변수 정의 (리전, 프로젝트명, DB 접속정보)
+- [x] `outputs.tf` — 출력값 정의 (ALB DNS)
+- [x] `terraform init` 성공
+
+#### 6-2. VPC 네트워크 구성 — 🔄 진행 중
+- [x] `vpc.tf` 작성
+  - VPC (10.0.0.0/16)
+  - Public Subnets 2개 (ap-northeast-2a, 2c) — ALB + ECS용
+  - Private Subnets 2개 (ap-northeast-2a, 2c) — RDS용
+  - Internet Gateway + Route Table
+- [ ] `terraform validate` 문법 검사
+
+#### 6-3. 보안 그룹 (Security Groups) — ⏳ 대기
+#### 6-4. RDS PostgreSQL — ⏳ 대기
+#### 6-5. ECR + ECS Fargate + ALB — ⏳ 대기
+#### 6-6. 전체 연결 및 terraform apply — ⏳ 대기
+
 ### Step 7: 배포 및 검증 — ⏳ 대기
