@@ -133,9 +133,14 @@ terraform/
     - RDS SG: 5432 포트 ECS에서만 허용
 - [x] `terraform validate` 통과
 
-#### 6-4. RDS PostgreSQL — 🔄 진행 중
+#### 6-4. RDS PostgreSQL — ✅ 완료
+- [x] `rds.tf` 작성
+  - DB Subnet Group (Private Subnet 2개)
+  - RDS PostgreSQL 16 (db.t3.micro, 프리 티어)
+  - 비밀번호는 변수로 분리 (sensitive)
+- [x] `terraform validate` 통과
 
-#### 6-5. ECR + ECS Fargate + ALB — ⏳ 대기
+#### 6-5. ECR + ECS Fargate + ALB — 🔄 진행 중
 
 #### 6-6. 전체 연결 및 terraform apply — ⏳ 대기
 
