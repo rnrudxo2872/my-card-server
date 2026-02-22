@@ -27,7 +27,7 @@ resource "aws_iam_role" "ecs_execution" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-            Service = "ecs_tasks.amazonaws.com"
+            Service = "ecs-tasks.amazonaws.com"
         }
     }]
   })
@@ -35,6 +35,11 @@ resource "aws_iam_role" "ecs_execution" {
   tags = {
     Name = "${var.project_name}-ecs-execution"
   }
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_execution" {
+  role = aws_iam_role.ecs_execution.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
 # ecs 태스크 정의
@@ -46,7 +51,7 @@ resource "aws_ecs_task_definition" "main" {
   memory = "512"
   execution_role_arn = aws_iam_role.ecs_execution.arn
 
-  container_definitions = jsonencode({
+  container_definitions = jsonencode([{
     name = "${var.project_name}-server"
     image = "${aws_ecr_repository.main.repository_url}:latest"
 
@@ -55,20 +60,20 @@ resource "aws_ecs_task_definition" "main" {
         protocol = "tcp"
     }]
 
-    enviroment = [{
+    environment = [{
         name = "DATABASE_URL"
         value = "host=${aws_db_instance.main.address} user=${var.db_username} password=${var.db_password} dbname=mycard port=5432 sslmode=require"
     }]
 
     logConfiguration = {
-        logDirver = "awslogs"
+        logDriver = "awslogs"
         options = {
             "awslogs-group" = aws_cloudwatch_log_group.ecs.name
             "awslogs-region" = var.aws_region
             "awslogs-stream-prefix" = "ecs"
         }
     }
-  })
+  }])
 
   tags = {
     Name = "${var.project_name}-task"
@@ -91,7 +96,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.main.arn
-    container_name = "${var.project_name}-srever"
+    container_name = "${var.project_name}-server"
     container_port = 8080
   }
 
