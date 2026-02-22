@@ -147,6 +147,9 @@ terraform/
 - [x] `outputs.tf` ALB DNS 출력 활성화
 - [x] `terraform validate` 통과
 
-#### 6-6. 전체 연결 및 terraform apply — 🔄 진행 중
+#### 6-6. 전체 연결 및 terraform apply — ✅ 완료
+- [x] `terraform plan` 으로 리소스 미리보기
+- [x] `terraform apply` 로 AWS에 인프라 생성
+- [x] ALB DNS 확인: `mycard-alb-1032538317.ap-northeast-2.elb.amazonaws.com`
 
-### Step 7: 배포 및 검증 — ⏳ 대기
+### Step 7: 배포 및 검증 — 🔄 진행 중
