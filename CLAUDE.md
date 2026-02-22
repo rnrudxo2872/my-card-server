@@ -159,3 +159,15 @@ terraform/
 - [x] ECS 서비스 강제 재배포 (`--force-new-deployment`)
 - [x] ALB를 통한 API 동작 검증 (health, payments)
 - [x] 배포 가이드 문서화 (`DEPLOY.md`)
+
+### Step 8: 테스트 작성 — 🔄 진행 중
+
+- [ ] Go 테스트 기초 (`testing` 패키지, `go test`)
+- [ ] handler 단위 테스트 (httptest 활용)
+- [ ] API 통합 테스트 (테스트 DB 연동)
+
+### Step 9: 인증/보안 — 대기
+
+- [ ] 인증 방식 결정 (API Key / JWT)
+- [ ] 인증 미들웨어 구현
+- [ ] 기존 테스트에 인증 반영
