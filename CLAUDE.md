@@ -140,8 +140,13 @@ terraform/
   - 비밀번호는 변수로 분리 (sensitive)
 - [x] `terraform validate` 통과
 
-#### 6-5. ECR + ECS Fargate + ALB — 🔄 진행 중
+#### 6-5. ECR + ECS Fargate + ALB — ✅ 완료
+- [x] `ecr.tf` 작성 (Docker 이미지 저장소)
+- [x] `alb.tf` 작성 (ALB + Target Group + Listener)
+- [x] `ecs.tf` 작성 (Cluster + Task Definition + Service + IAM Role + CloudWatch)
+- [x] `outputs.tf` ALB DNS 출력 활성화
+- [x] `terraform validate` 통과
 
-#### 6-6. 전체 연결 및 terraform apply — ⏳ 대기
+#### 6-6. 전체 연결 및 terraform apply — 🔄 진행 중
 
 ### Step 7: 배포 및 검증 — ⏳ 대기
