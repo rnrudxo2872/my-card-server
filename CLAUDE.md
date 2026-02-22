@@ -106,7 +106,7 @@ terraform/
 - [x] 환경변수(DATABASE_URL)로 DB 접속 정보 분리
 - [x] docker compose up으로 전체 실행 확인
 
-### Step 6: Terraform으로 AWS 인프라 구성 — 🔄 진행 중
+### Step 6: Terraform으로 AWS 인프라 구성 — ✅ 완료
 
 #### 6-1. Terraform 기초 — ✅ 완료
 
@@ -152,4 +152,10 @@ terraform/
 - [x] `terraform apply` 로 AWS에 인프라 생성
 - [x] ALB DNS 확인: `mycard-alb-1032538317.ap-northeast-2.elb.amazonaws.com`
 
-### Step 7: 배포 및 검증 — 🔄 진행 중
+### Step 7: 배포 및 검증 — ✅ 완료
+
+- [x] Docker 이미지 빌드 (`--platform linux/amd64`)
+- [x] ECR 로그인 및 이미지 푸시
+- [x] ECS 서비스 강제 재배포 (`--force-new-deployment`)
+- [x] ALB를 통한 API 동작 검증 (health, payments)
+- [x] 배포 가이드 문서화 (`DEPLOY.md`)
