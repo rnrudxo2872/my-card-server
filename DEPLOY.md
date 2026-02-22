@@ -69,6 +69,32 @@ curl -X POST http://mycard-alb-1032538317.ap-northeast-2.elb.amazonaws.com/payme
 curl http://mycard-alb-1032538317.ap-northeast-2.elb.amazonaws.com/payments
 ```
 
+## 인프라 관리 (비용 절감)
+
+개발 중에는 테스트할 때만 인프라를 생성하고, 끝나면 삭제하여 비용을 0원으로 유지합니다.
+
+### 인프라 삭제 (비용 중단)
+
+```bash
+cd terraform
+terraform destroy -var="db_password=<DB비밀번호>"
+```
+
+- 모든 리소스 목록이 표시되고 `yes` 입력 시 삭제 시작
+- 약 5~10분 소요
+- RDS 데이터는 삭제됨 (개발 단계에서는 무관)
+
+### 인프라 재생성 (테스트 필요 시)
+
+```bash
+cd terraform
+terraform apply -var="db_password=<DB비밀번호>"
+```
+
+- 약 10~15분 소요
+- 완료 후 ALB DNS 주소가 새로 출력됨 (이전과 다를 수 있음)
+- 이후 위의 **배포 순서 1~7번**을 다시 실행
+
 ## 트러블슈팅
 
 ### Docker 데몬 연결 에러
